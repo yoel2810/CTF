@@ -9,7 +9,7 @@ export const LevelButtons = ({ levelsNumber }: LevelButtonsProps) => {
   return (
     <Grid container rowSpacing={8}>
       {Array.from(Array(levelsNumber).keys()).map((level) => (
-        <Grid item xs={3}>
+        <Grid key={level} item xs={3}>
           <LevelButton level={(level + 1).toString()} />
         </Grid>
       ))}

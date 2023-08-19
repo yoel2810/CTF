@@ -5,10 +5,17 @@ import { Typography } from "@mui/material";
 
 export type TextChangerProps = {
   listOfPrompts: string[];
+  finishedAnimation: boolean;
+  setFinishedAnimation: React.Dispatch<React.SetStateAction<boolean>>;
   sx?: SxProps<Theme>;
 };
 
-export const TextChanger = ({ listOfPrompts, sx }: TextChangerProps) => {
+export const TextChanger = ({
+  listOfPrompts,
+  finishedAnimation,
+  setFinishedAnimation,
+  sx,
+}: TextChangerProps) => {
   const [index, setIndex] = useState(0);
 
   const props = useSpring({
@@ -21,8 +28,12 @@ export const TextChanger = ({ listOfPrompts, sx }: TextChangerProps) => {
     config: {
       duration: 1000,
     },
+    reset: finishedAnimation,
     onRest: () => {
-      setIndex((index + 1) % listOfPrompts.length);
+      if (index >= listOfPrompts.length - 1) {
+        setFinishedAnimation(true);
+      }
+      setIndex(index + 1);
     },
   });
 
@@ -36,10 +47,7 @@ export const TextChanger = ({ listOfPrompts, sx }: TextChangerProps) => {
       }}
     >
       <animated.div style={{ ...props }}>
-        <Typography
-          sx={{ fontSize: "3rem", fontFamily: "Orbitron", ...sx }}
-          variant="h1"
-        >
+        <Typography sx={{ fontSize: "3rem", ...sx }} variant="h1">
           {listOfPrompts[index]}
         </Typography>
       </animated.div>
