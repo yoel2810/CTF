@@ -1,17 +1,11 @@
 import { NeonButton } from "../NeonButton/NeonButton";
+import sxStyles from "./sxStyles";
 
 export type LevelButtonProps = {
   level: string;
+  onClick: () => void;
 };
 
-export const LevelButton = ({ level }: LevelButtonProps) => {
-  const handleClick = () => {};
-
-  return (
-    <NeonButton
-      sx={{ width: "2em", height: "2em" }}
-      text={level}
-      onClick={handleClick}
-    />
-  );
+export const LevelButton = ({ level, onClick }: LevelButtonProps) => {
+  return <NeonButton sx={sxStyles} text={level} onClick={onClick} />;
 };

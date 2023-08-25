@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useSpring, animated } from "@react-spring/web";
 import { SxProps, Theme } from "@mui/material/styles";
 import { Typography } from "@mui/material";
+import sxStyles from "./sxStyles";
 
 export type TextChangerProps = {
   listOfPrompts: string[];
@@ -22,7 +23,7 @@ export const TextChanger = ({
     from: { opacity: 1, transform: "translateY(0px)" },
     to: [
       { opacity: 1, transform: "translateY(0px)" },
-      { opacity: 0, transform: "translateY(-50px)" },
+      { opacity: 0, transform: "translateY(-30px)" },
     ],
     delay: 500,
     config: {
@@ -47,7 +48,7 @@ export const TextChanger = ({
       }}
     >
       <animated.div style={{ ...props }}>
-        <Typography sx={{ fontSize: "3rem", ...sx }} variant="h1">
+        <Typography sx={{ ...sxStyles.text, ...sx }} variant="h1">
           {listOfPrompts[index]}
         </Typography>
       </animated.div>
