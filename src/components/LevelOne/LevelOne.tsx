@@ -1,24 +1,20 @@
 import { Box } from "@mui/material";
-import { RiddleAndAnswer } from "../RiddleAndAnswer/RiddleAndAnswer";
 import riddles from "./riddles";
+import sxStyles from "./sxStyles";
+import Sliders from "../Sliders/Sliders";
+import { RiddleAndAnswer } from "../RiddleAndAnswer/RiddleAndAnswer";
 
 const LevelOne = () => {
   return (
-    <Box
-      sx={{
-        width: "70vw",
-        height: "100vh",
-        display: "flex",
-        flexDirection: "column",
-        justifyContent: "center",
-        alignItems: "center",
-      }}
-    >
-      <RiddleAndAnswer
-        answers={riddles[0].answers}
-        riddle={riddles[0].riddle}
-      />
-    </Box>
+    <>
+      <Sliders>
+        {riddles.map((riddle) => (
+          <Box key={riddle.riddle} sx={sxStyles.container}>
+            <RiddleAndAnswer answers={riddle.answers} riddle={riddle.riddle} />
+          </Box>
+        ))}
+      </Sliders>
+    </>
   );
 };
 

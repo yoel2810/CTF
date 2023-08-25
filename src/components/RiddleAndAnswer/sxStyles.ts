@@ -1,5 +1,7 @@
 const sxStyles = {
-  container: {},
+  input: {
+    marginTop: "2rem",
+  },
 };
 
 export default sxStyles;

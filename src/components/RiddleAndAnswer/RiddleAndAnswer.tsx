@@ -1,6 +1,7 @@
 import { Box } from "@mui/material";
 import { RiddleBox } from "../RiddleBox/Riddlebox";
 import { AnswerTextField } from "../AnswerTextField/AnswerTextField";
+import sxStyles from "./sxStyles";
 
 export type RiddleAndAnswerProps = {
   riddle: string;
@@ -11,7 +12,7 @@ export const RiddleAndAnswer = ({ riddle, answers }: RiddleAndAnswerProps) => {
   return (
     <Box>
       <RiddleBox riddle={riddle} />
-      <AnswerTextField answers={answers} sx={{ marginTop: "2rem" }} />
+      <AnswerTextField answers={answers} sx={sxStyles.input} />
     </Box>
   );
 };
