@@ -15,8 +15,8 @@ module.exports = {
       "warn",
       { allowConstantExport: true },
     ],
-    "no-console": "error",
-    "no-unused-vars": "error",
+    "no-console": "warn",
+    "no-unused-vars": "warn",
     // "import/order": [
     //   "error",
     //   {

@@ -1,11 +1,11 @@
 const sxStyles = {
   container: {
-    width: "70vw",
-    height: "100vh",
     display: "flex",
-    flexDirection: "column",
-    justifyContent: "center",
+    height: "100vh",
+    justifyContent: "space-between",
     alignItems: "center",
+    paddingRight: "5rem",
+    paddingLeft: "5rem",
   },
 };
 

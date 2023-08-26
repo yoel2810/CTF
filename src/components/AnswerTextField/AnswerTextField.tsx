@@ -1,29 +1,33 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { InputBase, SxProps, Theme } from "@mui/material";
 import sxStyles from "./sxStyles";
 
 export type AnswerTextFieldProps = {
   answers: string[];
+  value: string;
+  // eslint-disable-next-line no-unused-vars
+  handleChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
   sx?: SxProps<Theme>;
 };
 
-export const AnswerTextField = ({ answers, sx }: AnswerTextFieldProps) => {
-  const [value, setValue] = useState("");
-  const [isCorrect, setIsCorrect] = useState(false);
+export const AnswerTextField = ({
+  answers,
+  value,
+  handleChange,
+  sx,
+}: AnswerTextFieldProps) => {
+  const [isCorrect, setIsCorrect] = useState(
+    answers.includes(value.toLowerCase())
+  );
 
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const inputContent = event.target.value;
-    setValue(inputContent);
-    if (answers.includes(inputContent.toLowerCase())) {
-      setIsCorrect(true);
-    } else {
-      setIsCorrect(false);
-    }
-  };
+  useEffect(() => {
+    setIsCorrect(answers.includes(value.toLowerCase()));
+  }, [value, answers]);
 
   return (
     <InputBase
       value={value}
+      disabled={isCorrect}
       onChange={handleChange}
       sx={{
         ...sxStyles(isCorrect),

@@ -1,5 +1,7 @@
 import { useState } from "react";
-import { Box, Typography } from "@mui/material";
+import { Box } from "@mui/material";
+import { ArrowIcon } from "../ArrowIcon/ArrowIcon";
+import sxStyles from "./sxStyles";
 
 export type SlidersProps = {
   children: JSX.Element[];
@@ -9,7 +11,7 @@ const Sliders = ({ children }: SlidersProps) => {
   const [currentSlide, setCurrentSlide] = useState(0);
 
   const leftClickHandle = () => {
-    setCurrentSlide((prev: number) => {
+    setCurrentSlide((prev) => {
       if (prev === 0) {
         return children.length - 1;
       }
@@ -18,7 +20,7 @@ const Sliders = ({ children }: SlidersProps) => {
   };
 
   const rightClickHandle = () => {
-    setCurrentSlide((prev: number) => {
+    setCurrentSlide((prev) => {
       if (prev === children.length - 1) {
         return 0;
       }
@@ -27,14 +29,10 @@ const Sliders = ({ children }: SlidersProps) => {
   };
 
   return (
-    <Box
-      sx={{
-        display: "flex",
-      }}
-    >
-      <Typography onClick={leftClickHandle}>{"<"}</Typography>
+    <Box sx={sxStyles.container}>
+      <ArrowIcon direction="left" onClick={leftClickHandle} />
       {children[currentSlide]}
-      <Typography onClick={rightClickHandle}>{">"}</Typography>
+      <ArrowIcon direction="right" onClick={rightClickHandle} />
     </Box>
   );
 };
