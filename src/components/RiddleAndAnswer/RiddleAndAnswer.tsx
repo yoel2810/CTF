@@ -8,14 +8,15 @@ export type RiddleAndAnswerProps = {
   riddle: string;
   answers: string[];
   inputValue: string;
+  isCorrect: boolean;
   // eslint-disable-next-line no-unused-vars
   onChange: (event: ChangeEvent<HTMLInputElement>) => void;
 };
 
 export const RiddleAndAnswer = ({
   riddle,
-  answers,
   inputValue,
+  isCorrect,
   onChange,
 }: RiddleAndAnswerProps) => {
   return (
@@ -24,7 +25,7 @@ export const RiddleAndAnswer = ({
       <AnswerTextField
         handleChange={onChange}
         value={inputValue}
-        answers={answers}
+        isCorrect={isCorrect}
         sx={sxStyles.input}
       />
     </Box>
